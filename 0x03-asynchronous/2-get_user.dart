@@ -1,18 +1,12 @@
-import 'dart:convert';
-
-Future<String> fetchUser() =>
-    // Imagine that this function is
-    // more complex and slow.
-    Future.delayed(
+Future<String> fetchUser() => Future.delayed(
       const Duration(seconds: 2),
       () => throw 'Cannot locate user',
     );
-
-Future<void> getUser() async {
+    
+getUser() async {
   try {
-    var userData = await fetchUser();
-    print(jsonDecode(userData)['id']);
-  } catch (e) {
-    print('error caught: ${e}');
+    print(await fetchUser());
+  } catch (err) {
+    print('error caught: $err');
   }
 }
